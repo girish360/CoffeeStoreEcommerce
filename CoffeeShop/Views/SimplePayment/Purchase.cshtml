@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Purchase";
+    Layout = "~/Views/Shared/_Purchase.cshtml";
+}
+@model CoffeeShop.Models.PurchaseVM
+<section class="purchase">
+    <header class="blockheader">
+        <span>Comprar</span>
+    </header>
+
+    <section class="coffeedetails">
+        <figure class="productarticlelargefigure">
+            <img id="coffee1" class="productarticlelargeimage" src="@Model.Coffees.ImageUrl" />
+            <figcaption>@Model.Coffees.Name</figcaption>
+        </figure>
+        <div class="productarticlecontent">
+            <p class="productarticledescription">@Model.Coffees.LongDescription</p>
+            <p class="productarticleprice">@Model.Coffees.Price.ToString("c")</p>
+        </div>
+    </section>
+
+    @using (Html.BeginForm("Purchase", "SimplePayment", FormMethod.Post, new { htmlAttributes = new { id = "mainForm" } }))
+    {
+        @Html.HiddenFor(m => m.Coffees.Id)
+        @Html.AntiForgeryToken()
+        <fieldset class="box">
+            @*<legend>Your details</legend>*@
+            <div>
+                <p>
+                    @Html.LabelFor(m => m.Tickets.Name, new { htmlAtttributes = new { @for = "firstNameInput" } })
+                    @Html.EditorFor(m => m.Tickets.Name, new { htmlattibutes = new { @autofocus = true, placeholder = "Escreva seu Nome completo", id = "firstNameInput" } })
+                    @Html.ValidationMessageFor(m => m.Tickets.Name, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Tickets.Email, new { htmlAtttributes = new { @for = "emailInput" } })
+                    @Html.EditorFor(m => m.Tickets.Email, new { htmlattibutes = new { @autofocus = false, placeholder = "Escreva seu E-mail", id = "emailInput" } })
+                    @Html.ValidationMessageFor(m => m.Tickets.Email, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Tickets.ZipCode, new { htmlAtttributes = new { @for = "zipInput" } })
+                    @Html.EditorFor(m => m.Tickets.ZipCode, new { htmlattibutes = new { @autofocus = false, placeholder = "Escreva seu E-mail", id = "zipInput" } })
+                    @Html.ValidationMessageFor(m => m.Tickets.ZipCode, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Tickets.Street, new { htmlAtttributes = new { @for = "streetInput" } })
+                    @Html.EditorFor(m => m.Tickets.Street, new { htmlattibutes = new { @autofocus = false, placeholder = "Escreva seu E-mail", id = "streetInput" } })
+                    @Html.ValidationMessageFor(m => m.Tickets.Street, "", new { @class = "text-danger" })
+                </p>
+
+                <p>
+                    @Html.LabelFor(m => m.Tickets.AddressNumber, new { htmlAtttributes = new { @for = "numberInput" } })
+                    @Html.EditorFor(m => m.Tickets.AddressNumber, new { htmlattibutes = new { @autofocus = false, placeholder = "Escreva seu E-mail", id = "numberInput" } })
+                    @Html.ValidationMessageFor(m => m.Tickets.AddressNumber, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Tickets.City, new { htmlAtttributes = new { @for = "cityInput" } })
+                    @Html.EditorFor(m => m.Tickets.City, new { htmlattibutes = new { @autofocus = false, placeholder = "Escreva seu E-mail", id = "cityInput" } })
+                    @Html.ValidationMessageFor(m => m.Tickets.City, "", new { @class = "text-danger" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Tickets.Country, new { htmlAtttributes = new { @for = "countryInput" } })
+                    @Html.EditorFor(m => m.Tickets.Country, new { htmlattibutes = new { @autofocus = false, placeholder = "Escreva seu E-mail", id = "countryInput" } })
+                    @Html.ValidationMessageFor(m => m.Tickets.Country, "", new { @class = "text-danger" })
+                </p>
+                <input type="submit" class="btn btn-success btn-block" value="Comprar" />
+            </div>
+        </fieldset>
+    }
+</section>
+

@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CoffeeShop.Models.BestSellersVM
+
+<!--texto de boas vindas-->
+<section id="welcometext">
+    <header>Bem vindos ao MussuM's Coffee</header>
+    <span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p><mark>testando elemento Mark html5</mark></p>
+    </span>
+</section>
+
+<!--trabalhar na entity events, STAND BY!!!!!!!!!!!############-->
+<aside id="events">
+    <header>Eventos do café</header>
+    <ul>
+        <li><a href="#">Café queimado</a></li>
+        <li><a href="#">Café que sobrou de ontém</a></li>
+        <li><a href="#">Loja redecorada</a></li>
+    </ul>
+</aside>
+
+<section id="bestsellers">
+    <header style="padding:5px;text-align:center;">Melhores cafés do MussuM's coffee</header>
+    @foreach (var coffee in Model.Coffes)
+    {
+    <section class="coffeebestsellers">
+        <article class="productarticle">
+            <a href="@Url.Action("Details","Coffee", new { id = coffee.Id})">
+                <figure>
+                    <img class="productarticlethumbnail" src="@coffee.ImageUrl" />
+                </figure>
+                <header>
+                    <span class="producarticlename">@coffee.Name</span>
+                </header>
+            </a>            <p class="productarticleprice">@coffee.Price.ToString("c")</p>
+
+            <a href="@Url.Action("Add", "ECommerce", new { id = coffee.Id})">
+                <div class="btn btn-warning btn-block" id="testButton">
+                    Adicionar ao carrinho
+                </div>
+            </a>
+            <a href="@Url.Action("Purchase", "SimplePayment", new { id = coffee.Id})">
+                <div class="btn btn-success btn-block" id="testButton">
+                    Comprar
+                </div>
+            </a>
+        </article>
+    </section>
+    }
+</section>
+
+
+

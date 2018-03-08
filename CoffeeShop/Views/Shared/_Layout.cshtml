@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MussuM's Coffee</title>
+    @Styles.Render("~/Content/css") <!--dentro content/css está layout.css-->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <header>
+        <div>
+
+            <span id="headername">MussuM's Coffee</span>
+            <input type="search" class="searchbox" placeholder="Search our store" />
+        </div>
+
+        <nav class="backgroundgradient">
+            <ul>
+                <li><a class="navlink" href="@Url.Action("BestSellers","Coffee")">Home</a></li>
+                <li><a class="navlink" href="@Url.Action("AllCoffees","Coffee")">Cafés</a></li>
+                <li><a class="navlink" href="findus.html">Encontre-nos</a></li>
+                <li><a class="navlink" href="@Url.Action("Cart","ECommerce")">Cart</a></li>
+                <li><a class="navlink" href="@Url.Action("Sales","Sales")">Vendas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="welcomeimage">
+        <img src="~/Images/coffeeheader.jpg" />
+    </div>
+    <div id="coffeeofthemonth">
+        <img src="~/images/cotm.jpg" />
+    </div>
+
+    <div class="">
+        @RenderBody()
+    </div>
+
+    <footer id="footer">
+        <p>Nosso endereço <address>Rua das Andradas, 1254, POA</address></p>
+        <p class="textcontent">Designed By Marcelo Biberg <a href="https://github.com/marcelobiberg"> </a></p>
+        <p><time>@DateTime.Now</time></p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

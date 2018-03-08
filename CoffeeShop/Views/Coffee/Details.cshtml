@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Purchase.cshtml";
+}
+@model CoffeeShop.Models.DetailsVM
+<section class="coffeedetails">
+    <header class="blockheader">
+        @*<span>Coffee 1</span>*@
+    </header>
+    <figure class="productarticlelargefigure">
+        <img id="coffee1" class="productarticlelargeimage" src="@Model.Coffee.ImageUrl" />
+        <figcaption>@Model.Coffee.Name</figcaption>
+    </figure>
+    <div class="productarticlecontent">
+        <p class="productarticledescription">@Model.Coffee.LongDescription</p>
+        <p class="productarticleprice">@Model.Coffee.Price.ToString("c")</p>
+
+        <a href="@Url.Action("Purchase", "SimplePayment", new { id = Model.Coffee.Id})" class="btn btn-block btn-success">
+            Comprar
+        </a>
+
+        <a href="@Url.Action("Purchase", "SimplePayment", new { id = Model.Coffee.Id})" class="btn btn-block btn-warning">
+            Adicionar ao carrinho
+        </a>
+
+    </div>
+
+</section>
+
+

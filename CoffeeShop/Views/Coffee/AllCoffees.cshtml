@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CoffeeShop.Models.AllCoffeesVM
+
+<section class="allcoffees">
+    <header class="blockheader">
+        <span>Espresso coffee beans</span>
+    </header>
+    @foreach (var coffee in Model.Coffee)
+    {
+        <article class="productarticlewide" id="coffee-1" data-price="10.00">
+            <img id="coffee1" class="productarticlewidethumbnail" src="@coffee.ImageUrl" />
+            <div class="productarticlewidecontent">
+                <header>
+                    <span class="productarticlewidename">@coffee.Name</span>
+                </header>
+                <p class="productarticlewidedescription">@coffee.ShortDescription </p>
+                <p class="productarticlewideprice">@coffee.Price.ToString("c")</p>
+
+            </div>
+        </article>
+    }
+
+</section>
+
+
